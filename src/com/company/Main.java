@@ -20,21 +20,26 @@ public class Main {
 
     //createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
     static List<Car> carObjectList = new ArrayList<>();
+    static List<Truck> truckObjectList = new ArrayList<>();
     static void createVehicles() {
 
         for (int count = 1; count <= 10; count++) {
             carObjectList.add(new Car());
+            truckObjectList.add(new Truck());
+
         }
         System.out.println(carObjectList);
+        System.out.println(truckObjectList);
     }
 
 
-    //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
+    //simulates the race by calling moveForAnHour() on every vehicle 50 times
     // and setting whether its raining.
     static void simulateRace() {
         for (int j =0; j < 50; j++) {
             for (int i = 0; i < carObjectList.size(); i++) {
                 carObjectList.get(i).moveForAnHour();
+                truckObjectList.get(i).moveForAnHour();
             }
         }
     }
@@ -43,12 +48,10 @@ public class Main {
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
-        Car car1 = new Car();
-        Car.setSpeedLimit(70);
-        car1.moveForAnHour();
-        car1.moveForAnHour();
         createVehicles();
         simulateRace();
+
+
     }
 }
 
@@ -64,7 +67,7 @@ class Car {
 
     Car() {
 
-        //normalSpeed // the normal speed of the car. Set to a random number in the constructor between 80-110km/h
+        //the normal speed of the car. Set to a random number in the constructor between 80-110km/h
         Random rand = new Random();
         normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
         System.out.println(normalSpeed);
@@ -74,7 +77,6 @@ class Car {
     }
 
     // Since cars are so fast there is a 30% chance that they can go only with 70km/h speed
-    //static setSpeedLimit(int limit) // Call this from the Main class!
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
         System.out.println(speedLimit);
@@ -91,18 +93,18 @@ class Car {
     }
 
 
-    //distanceTraveled // holds the current distance traveled
-    // moveForAnHour() // The vehicle travels for an hour. It increases the distance traveled. Call this from the main class only
+    //distanceTraveled: holds the current distance traveled
+    //The vehicle travels for an hour. It increases the distance travele
     int distanceTraveled = 0;
 
     void moveForAnHour() {
         int distanceFromSpeed = generateSpeed();
         distanceTraveled += distanceFromSpeed;
-        System.out.println(distanceTraveled);
+        System.out.println(carName + " " + distanceTraveled);
     }
 
 
-    //name // Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
+    //name: Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
     // and pick 2 randomly for each instance.
     void createCarName() {
         List<String> carNamesList = new ArrayList<String>();
@@ -142,14 +144,59 @@ class Motorcycle {
 
 
 class Truck {
-    /*// speed: 100km/h. 5% chance of breaking down for 2 hours.
-    // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
-    breakdownTurnsLeft // holds how long its still broken down.
-    distanceTraveled
-    moveForAnHour()*/
+
+    int truckName;
+    boolean breakdown;
 
     Truck() {
+        createTruckName();
+    }
 
+    //speed: 100km/h. 5% chance of breaking down for 2 hours
+    int truckSpeed = 100;
+
+    boolean setBreakingDown() {
+        breakdown=false;
+        Random random = new Random();
+        double chance = random.nextDouble();
+        if (chance <= 0.05) {
+            breakdown = true;
+            breakdownTurnsLeft = 2;
+        }
+        return breakdown;
+    }
+
+
+    //breakdownTurnsLeft: holds how long its still broken down
+    int breakdownTurnsLeft;
+
+    int distanceTraveled = 0;
+
+    void moveForAnHour() {
+        int distanceFromSpeed = truckSpeed;
+        // the truck will be broken down for 1 or 2 hours long
+        if (breakdownTurnsLeft > 0) {
+            distanceTraveled += 0;
+            breakdownTurnsLeft -= 1;
+
+        } else {
+            breakdownTurnsLeft = 0;
+            distanceTraveled += distanceFromSpeed;
+            setBreakingDown();
+        }
+
+        System.out.println("truckname: " + truckName + " " + distanceTraveled);
+        System.out.println(breakdownTurnsLeft);
+    }
+
+    //They call all their trucks a random number between 0 and 1000
+    int truckNameMin = 0;
+    int truckNameMax = 1000;
+
+    void createTruckName() {
+        Random rand = new Random();
+        truckName = truckNameMin + rand.nextInt((truckNameMax - truckNameMin));
+        System.out.println("truckname: " + truckName);
     }
 }
 
