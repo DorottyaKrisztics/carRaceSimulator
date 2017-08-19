@@ -7,6 +7,17 @@ import java.util.Random;
 public class Main {
 
     //static isRaining //30% chance of rain every hour
+    static boolean isRaining() {
+        boolean rain=false;
+        Random random = new Random();
+        double chance = random.nextDouble();
+        if (chance <= 0.3) {
+            rain = true;
+        }
+        return rain;
+    }
+
+
     //createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
     //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
     // and setting whether its raining.
