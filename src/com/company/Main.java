@@ -12,6 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
         Car car1 = new Car();
+        Car.setSpeedLimit(70);
     }
 }
 
@@ -23,9 +24,10 @@ class Car {
     int normalSpeed;
     int speedMin = 80;
     int speedMax = 110;
+    static int speedLimit;
 
     Car() {
-        
+
         //normalSpeed // the normal speed of the car. Set to a random number in the constructor between 80-110km/h
         Random rand = new Random();
         normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
@@ -36,7 +38,18 @@ class Car {
     // Since cars are so fast there is a 30% chance that they can go only with 70km/h speed
     //static setSpeedLimit(int limit) // Call this from the Main class!
     static void setSpeedLimit(int limit) {
+        speedLimit = limit;
+        System.out.println(speedLimit);
+    }
 
+    int generateSpeed() {
+        Random random = new Random();
+        double chance = random.nextDouble();
+        if (chance <= 0.3) {
+
+            return speedLimit;
+        }
+        return normalSpeed;
     }
 
 
@@ -67,6 +80,7 @@ class Motorcycle {
 
     }
 }
+
 
 class Truck {
     /*// speed: 100km/h. 5% chance of breaking down for 2 hours.
