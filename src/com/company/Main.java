@@ -43,12 +43,8 @@ public class Main {
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
-        Car car1 = new Car();
-        Car.setSpeedLimit(70);
-        car1.moveForAnHour();
-        car1.moveForAnHour();
-        createVehicles();
-        simulateRace();
+        Truck Truck1 = new Truck();
+
     }
 }
 
@@ -142,14 +138,36 @@ class Motorcycle {
 
 
 class Truck {
-    /*// speed: 100km/h. 5% chance of breaking down for 2 hours.
-    // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
-    breakdownTurnsLeft // holds how long its still broken down.
-    distanceTraveled
-    moveForAnHour()*/
+
+    String truckName;
 
     Truck() {
 
+        //createTruckName();
+        System.out.println(setBreakingDown());
     }
+
+
+    // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
+    void createTruckName() {}
+
+
+    // speed: 100km/h. 5% chance of breaking down for 2 hours.
+    int truckSpeed = 100;
+
+    boolean setBreakingDown() {
+        boolean breakdown=false;
+        Random random = new Random();
+        double chance = random.nextDouble();
+        if (chance <= 0.05) {
+            breakdown = true;
+        }
+        return breakdown;
+    }
+
+
+    //breakdownTurnsLeft // holds how long its still broken down.
+    //distanceTraveled
+    //moveForAnHour()
 }
 
