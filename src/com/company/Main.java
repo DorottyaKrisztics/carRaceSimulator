@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) {
         Car car1 = new Car();
         Car.setSpeedLimit(70);
+        car1.moveForAnHour();
+        car1.moveForAnHour();
     }
 }
 
@@ -55,11 +57,14 @@ class Car {
 
     //distanceTraveled // holds the current distance traveled
     // moveForAnHour() // The vehicle travels for an hour. It increases the distance traveled. Call this from the main class only
-    int distanceTraveled;
+    int distanceTraveled = 0;
 
     void moveForAnHour() {
-
+        int distanceFromSpeed = generateSpeed();
+        distanceTraveled += distanceFromSpeed;
+        System.out.println(distanceTraveled);
     }
+
 
     //name // Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
     // and pick 2 randomly for each instance.
