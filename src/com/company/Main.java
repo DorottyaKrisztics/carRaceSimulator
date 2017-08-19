@@ -31,6 +31,15 @@ public class Main {
 
     //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
     // and setting whether its raining.
+    static void simulateRace() {
+        for (int j =0; j < 50; j++) {
+            for (int i = 0; i < carObjectList.size(); i++) {
+                carObjectList.get(i).moveForAnHour();
+            }
+        }
+    }
+
+
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
@@ -39,6 +48,7 @@ public class Main {
         car1.moveForAnHour();
         car1.moveForAnHour();
         createVehicles();
+        simulateRace();
     }
 }
 
