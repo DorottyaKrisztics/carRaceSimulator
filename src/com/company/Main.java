@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Main {
@@ -35,6 +37,8 @@ class Car {
         normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
         System.out.println(normalSpeed);
 
+        createCarName();
+
     }
 
     // Since cars are so fast there is a 30% chance that they can go only with 70km/h speed
@@ -69,7 +73,25 @@ class Car {
     //name // Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
     // and pick 2 randomly for each instance.
     void createCarName() {
+        List<String> carNamesList = new ArrayList<String>();
+        carNamesList.add("Vigor");
+        carNamesList.add("Hollo");
+        carNamesList.add("Symbol");
+        carNamesList.add("Dynamo");
+        carNamesList.add("Orbit");
+        carNamesList.add("Icon");
+        carNamesList.add("Corsair");
+        carNamesList.add("Expedition");
+        carNamesList.add("Intro");
+        carNamesList.add("Hero");
+        System.out.println(carNamesList);
 
+        Random rand = new Random();
+        int randomIndex1 = rand.nextInt(10);
+        int randomIndex2 = rand.nextInt(10);
+
+        carName = carNamesList.get(randomIndex1) + " " + carNamesList.get(randomIndex2);
+        System.out.println(carName);
     }
 }
 
