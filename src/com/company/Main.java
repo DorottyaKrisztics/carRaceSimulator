@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Random;
+
 public class Main {
 
     //static isRaining //30% chance of rain every hour
@@ -9,7 +11,7 @@ public class Main {
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
-
+        Car car1 = new Car();
     }
 }
 
@@ -18,10 +20,17 @@ class Car {
 
     String carName;
 
+    int normalSpeed;
+    int speedMin = 80;
+    int speedMax = 110;
 
     Car() {
-
+        
         //normalSpeed // the normal speed of the car. Set to a random number in the constructor between 80-110km/h
+        Random rand = new Random();
+        normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
+        System.out.println(normalSpeed);
+
     }
 
     // Since cars are so fast there is a 30% chance that they can go only with 70km/h speed
