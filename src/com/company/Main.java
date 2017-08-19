@@ -19,6 +19,16 @@ public class Main {
 
 
     //createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
+    static List<Car> carObjectList = new ArrayList<>();
+    static void createVehicles() {
+
+        for (int count = 1; count <= 10; count++) {
+            carObjectList.add(new Car());
+        }
+        System.out.println(carObjectList);
+    }
+
+
     //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
     // and setting whether its raining.
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
@@ -28,6 +38,7 @@ public class Main {
         Car.setSpeedLimit(70);
         car1.moveForAnHour();
         car1.moveForAnHour();
+        createVehicles();
     }
 }
 
