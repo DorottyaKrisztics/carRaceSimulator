@@ -33,12 +33,13 @@ public class Main {
     }
 
 
-    //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
+    //simulates the race by calling moveForAnHour() on every vehicle 50 times
     // and setting whether its raining.
     static void simulateRace() {
         for (int j =0; j < 50; j++) {
             for (int i = 0; i < carObjectList.size(); i++) {
                 carObjectList.get(i).moveForAnHour();
+                truckObjectList.get(i).moveForAnHour();
             }
         }
     }
@@ -48,7 +49,8 @@ public class Main {
 
     public static void main(String[] args) {
         createVehicles();
-        
+        simulateRace();
+
 
     }
 }
@@ -98,7 +100,7 @@ class Car {
     void moveForAnHour() {
         int distanceFromSpeed = generateSpeed();
         distanceTraveled += distanceFromSpeed;
-        System.out.println(distanceTraveled);
+        System.out.println(carName + " " + distanceTraveled);
     }
 
 
@@ -183,7 +185,7 @@ class Truck {
             setBreakingDown();
         }
 
-        System.out.println(distanceTraveled);
+        System.out.println("truckname: " + truckName + " " + distanceTraveled);
         System.out.println(breakdownTurnsLeft);
     }
 
