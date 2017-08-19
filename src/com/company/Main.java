@@ -20,12 +20,16 @@ public class Main {
 
     //createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
     static List<Car> carObjectList = new ArrayList<>();
+    static List<Truck> truckObjectList = new ArrayList<>();
     static void createVehicles() {
 
         for (int count = 1; count <= 10; count++) {
             carObjectList.add(new Car());
+            truckObjectList.add(new Truck());
+
         }
         System.out.println(carObjectList);
+        System.out.println(truckObjectList);
     }
 
 
@@ -43,12 +47,8 @@ public class Main {
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
-        Truck Truck1 = new Truck();
-
-        for (int i=0; i<50; i++) {
-            Truck1.moveForAnHour();
-        }
-
+        createVehicles();
+        
 
     }
 }
