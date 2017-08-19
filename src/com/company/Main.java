@@ -143,18 +143,12 @@ class Motorcycle {
 
 class Truck {
 
-    String truckName;
+    int truckName;
     boolean breakdown;
 
     Truck() {
-
-        //createTruckName();
+        createTruckName();
     }
-
-
-    //They call all their trucks a random number between 0 and 1000
-    void createTruckName() {}
-
 
     //speed: 100km/h. 5% chance of breaking down for 2 hours
     int truckSpeed = 100;
@@ -191,6 +185,16 @@ class Truck {
 
         System.out.println(distanceTraveled);
         System.out.println(breakdownTurnsLeft);
+    }
+
+    //They call all their trucks a random number between 0 and 1000
+    int truckNameMin = 0;
+    int truckNameMax = 1000;
+
+    void createTruckName() {
+        Random rand = new Random();
+        truckName = truckNameMin + rand.nextInt((truckNameMax - truckNameMin));
+        System.out.println("truckname: " + truckName);
     }
 }
 
