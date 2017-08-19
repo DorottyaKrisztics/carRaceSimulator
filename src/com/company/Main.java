@@ -43,12 +43,12 @@ public class Main {
     //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
 
     public static void main(String[] args) {
-        Car car1 = new Car();
-        Car.setSpeedLimit(70);
-        car1.moveForAnHour();
-        car1.moveForAnHour();
-        createVehicles();
-        simulateRace();
+        Motorcycle motorcycle1 = new Motorcycle();
+
+        //motorcycle1.moveForAnHour();
+        //motorcycle1.moveForAnHour();
+        //createVehicles();
+        //simulateRace();
     }
 }
 
@@ -129,14 +129,34 @@ class Car {
 
 
 class Motorcycle {
-    /*// speed is 100km/h. If rains, travels with 5-50km/h slower (randomly).
-    static nameNumber // The number of the instance created. Used for its name.
-    name // Are called "Motorcycle 1", "Motorcycle 2", "Motorcycle 3",... Unique.
-    distanceTraveled
-    moveForAnHour()*/
+    // speed is 100km/h. If rains, travels with 5-50km/h slower (randomly).
+    int motorcycleSpeed = 100;
+    int motorSpeedMin = 5;
+    int motorSpeedMax = 50;
+
+    void setSlowerSpeed(boolean rainyWeather) {
+
+        Random rand = new Random();
+        int randomSpeed = motorSpeedMin + rand.nextInt((motorSpeedMax - motorSpeedMin));
+
+        if (rainyWeather == true) {
+            motorcycleSpeed -= randomSpeed;
+        } else {
+            motorcycleSpeed = 100;
+        }
+        System.out.println(motorcycleSpeed);
+        System.out.println(rainyWeather);
+    }
+
+    //static nameNumber // The number of the instance created. Used for its name.
+    //name // Are called "Motorcycle 1", "Motorcycle 2", "Motorcycle 3",... Unique.
+    //distanceTraveled
+    //moveForAnHour()
+
+
 
     Motorcycle(){
-
+        setSlowerSpeed(Main.isRaining());
     }
 }
 
