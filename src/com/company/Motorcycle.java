@@ -54,7 +54,7 @@ public class Motorcycle {
 
         int distanceFromSpeed = motorcycleSpeed;
         distanceTraveled += distanceFromSpeed;
-        System.out.println(distanceTraveled);
+        System.out.println(motorcycleName + " " + distanceTraveled);
     }
 
 }
