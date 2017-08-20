@@ -26,7 +26,7 @@ public class Motorcycle {
         } else {
             motorcycleSpeed = 100;
         }
-        System.out.println(motorcycleSpeed);
+        //System.out.println(motorcycleSpeed);
         System.out.println(rainyWeather);
     }
 

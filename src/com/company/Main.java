@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Main {
 
-    //static isRaining //30% chance of rain every hour
+    //static isRaining(): 30% chance of rain every hour
     static boolean isRaining() {
         boolean rain=false;
         Random random = new Random();
@@ -18,40 +18,48 @@ public class Main {
     }
 
 
-    //createVehicles() // creates 10 cars, 10 trucks and 10 motorcycles
+    //createVehicles(): creates 10 cars, 10 trucks and 10 motorcycles
     static List<Car> carObjectList = new ArrayList<>();
+    static List<Motorcycle> motorcycleObjectList = new ArrayList<>();
+
     static void createVehicles() {
 
         for (int count = 1; count <= 10; count++) {
             carObjectList.add(new Car());
+            motorcycleObjectList.add(new Motorcycle());
+
         }
         System.out.println(carObjectList);
+        System.out.println(motorcycleObjectList);
     }
 
 
-    //simulateRace() // simulates the race by calling moveForAnHour() on every vehicle 50 times
-    // and setting whether its raining.
+    //simulateRace(): simulates the race by calling moveForAnHour() on every vehicle 50 times
+    // and setting whether its raining
     static void simulateRace() {
         for (int j =0; j < 50; j++) {
-            for (int i = 0; i < carObjectList.size(); i++) {
+            boolean rainyRace = isRaining();
+
+            for (int i = 0; i < 10; i++) {
                 carObjectList.get(i).moveForAnHour();
+                motorcycleObjectList.get(i).moveForAnHour(rainyRace);
             }
         }
     }
 
 
-    //printRaceResults() // prints each vehicle's name, distance traveled ant type
+    //printRaceResults(): prints each vehicle's name, distance traveled ant type
     void printRaceResults() {}
 
 
     public static void main(String[] args) {
-        Motorcycle motorcycle1 = new Motorcycle();
-        Motorcycle motorcycle2 = new Motorcycle();
+        //Motorcycle motorcycle1 = new Motorcycle();
+        //Motorcycle motorcycle2 = new Motorcycle();
 
-        motorcycle1.moveForAnHour(isRaining());
-        motorcycle1.moveForAnHour(true);
-        //createVehicles();
-        //simulateRace();
+        //motorcycle1.moveForAnHour(isRaining());
+        //motorcycle1.moveForAnHour(true);
+        createVehicles();
+        simulateRace();
     }
 }
 
@@ -67,7 +75,7 @@ class Car {
 
     Car() {
 
-        //normalSpeed // the normal speed of the car. Set to a random number in the constructor between 80-110km/h
+        //normalSpeed: the normal speed of the car. Set to a random number in the constructor between 80-110km/h
         Random rand = new Random();
         normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
         System.out.println(normalSpeed);
@@ -76,8 +84,8 @@ class Car {
 
     }
 
-    // Since cars are so fast there is a 30% chance that they can go only with 70km/h speed
-    //static setSpeedLimit(int limit) // Call this from the Main class!
+    //there is a 30% chance that they can go only with 70km/h speed
+    //static setSpeedLimit(int limit): Call this from the Main class!
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
         System.out.println(speedLimit);
@@ -94,8 +102,8 @@ class Car {
     }
 
 
-    //distanceTraveled // holds the current distance traveled
-    // moveForAnHour() // The vehicle travels for an hour. It increases the distance traveled. Call this from the main class only
+    //distanceTraveled: holds the current distance traveled
+    // moveForAnHour(): The vehicle travels for an hour. It increases the distance traveled. Call this from the main class only
     int distanceTraveled = 0;
 
     void moveForAnHour() {
@@ -105,8 +113,8 @@ class Car {
     }
 
 
-    //name // Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
-    // and pick 2 randomly for each instance.
+    //name: Make a list from the words here: http://www.fantasynamegenerators.com/car-names.php
+    //and pick 2 randomly for each instance
     void createCarName() {
         List<String> carNamesList = new ArrayList<String>();
         carNamesList.add("Vigor");
@@ -119,7 +127,7 @@ class Car {
         carNamesList.add("Expedition");
         carNamesList.add("Intro");
         carNamesList.add("Hero");
-        System.out.println(carNamesList);
+        //System.out.println(carNamesList);
 
         Random rand = new Random();
         int randomIndex1 = rand.nextInt(10);
