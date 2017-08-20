@@ -31,7 +31,10 @@ public class Main {
             motorcycleObjectList.add(new Motorcycle());
             truckObjectList.add(new Truck());
         }
-
+        for (int i=0; i < carObjectList.size(); i++) {
+            carObjectList.get(i).setSpeedLimit(70);
+        }
+        
         System.out.println(carObjectList);
         System.out.println(truckObjectList);
         System.out.println(motorcycleObjectList);
