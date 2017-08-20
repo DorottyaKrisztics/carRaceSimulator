@@ -59,5 +59,13 @@ public class Truck {
         truckName = truckNameMin + rand.nextInt((truckNameMax - truckNameMin));
         System.out.println("truckname: " + truckName);
     }
+
+    int getTruckName() {
+        return truckName;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
+    }
 }
 

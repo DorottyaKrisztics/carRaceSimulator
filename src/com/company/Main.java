@@ -66,6 +66,14 @@ public class Main {
             System.out.println("Car: " + getCarName + " " + getDistanceTraveled);
         }
 
+        for (int i=0; i< truckObjectList.size(); i++) {
+
+            int getTruckName = truckObjectList.get(i).getTruckName();
+            int getDistanceTraveled = truckObjectList.get(i).getDistanceTraveled();
+            System.out.println("Truck: " + getTruckName + " " + getDistanceTraveled);
+        }
+
+
     }
 
 
