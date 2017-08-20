@@ -78,4 +78,12 @@ public class Car {
         carName = carNamesList.get(randomIndex1) + " " + carNamesList.get(randomIndex2);
         System.out.println(carName);
     }
+
+    String getCarName() {
+        return carName;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
+    }
 }

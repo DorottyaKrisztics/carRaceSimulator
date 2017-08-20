@@ -34,7 +34,7 @@ public class Main {
         for (int i=0; i < carObjectList.size(); i++) {
             carObjectList.get(i).setSpeedLimit(70);
         }
-        
+
         System.out.println(carObjectList);
         System.out.println(truckObjectList);
         System.out.println(motorcycleObjectList);
@@ -56,13 +56,23 @@ public class Main {
     }
 
 
-    //printRaceResults(): prints each vehicle's name, distance traveled ant type
-    void printRaceResults() {}
+    //printRaceResults(): prints each vehicle's name, distance traveled and type
+    static void printRaceResults() {
+
+        for (int i=0; i< carObjectList.size(); i++) {
+
+            String getCarName = carObjectList.get(i).getCarName();
+            int getDistanceTraveled = carObjectList.get(i).getDistanceTraveled();
+            System.out.println("Car: " + getCarName + " " + getDistanceTraveled);
+        }
+
+    }
 
 
     public static void main(String[] args) {
         createVehicles();
         simulateRace();
+        printRaceResults();
     }
 }
 
