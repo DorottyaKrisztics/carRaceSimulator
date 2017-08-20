@@ -46,6 +46,7 @@ public class Main {
 
     public static void main(String[] args) {
         Motorcycle motorcycle1 = new Motorcycle();
+        Motorcycle motorcycle2 = new Motorcycle();
 
         motorcycle1.moveForAnHour(isRaining());
         motorcycle1.moveForAnHour(true);
