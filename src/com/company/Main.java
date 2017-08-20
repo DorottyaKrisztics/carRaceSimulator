@@ -40,13 +40,15 @@ public class Main {
     }
 
 
-    //printRaceResults() // prints each vehicle's name, distance traveled ant type.*/
+    //printRaceResults() // prints each vehicle's name, distance traveled ant type
+    void printRaceResults() {}
+
 
     public static void main(String[] args) {
         Motorcycle motorcycle1 = new Motorcycle();
 
-        //motorcycle1.moveForAnHour();
-        //motorcycle1.moveForAnHour();
+        motorcycle1.moveForAnHour(isRaining());
+        motorcycle1.moveForAnHour(true);
         //createVehicles();
         //simulateRace();
     }
@@ -150,9 +152,18 @@ class Motorcycle {
 
     //static nameNumber // The number of the instance created. Used for its name.
     //name // Are called "Motorcycle 1", "Motorcycle 2", "Motorcycle 3",... Unique.
-    //distanceTraveled
-    //moveForAnHour()
 
+
+    //distanceTraveled, moveForAnHour()
+    int distanceTraveled = 0;
+
+    void moveForAnHour(boolean rainyWeather) {
+        setSlowerSpeed(rainyWeather);
+
+        int distanceFromSpeed = motorcycleSpeed;
+        distanceTraveled += distanceFromSpeed;
+        System.out.println(distanceTraveled);
+    }
 
 
     Motorcycle(){
