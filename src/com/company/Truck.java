@@ -10,6 +10,7 @@ public class Truck {
 
 
     Truck() {
+
         createTruckName();
     }
 
@@ -45,9 +46,6 @@ public class Truck {
             distanceTraveled += distanceFromSpeed;
             setBreakingDown();
         }
-
-        System.out.println("truckname: " + truckName + " " + distanceTraveled);
-        System.out.println(breakdownTurnsLeft);
     }
 
     //They call all their trucks a random number between 0 and 1000
@@ -57,7 +55,6 @@ public class Truck {
     void createTruckName() {
         Random rand = new Random();
         truckName = truckNameMin + rand.nextInt((truckNameMax - truckNameMin));
-        System.out.println("truckname: " + truckName);
     }
 
     int getTruckName() {

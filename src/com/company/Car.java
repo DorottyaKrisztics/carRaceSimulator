@@ -19,7 +19,6 @@ public class Car {
         //normalSpeed: the normal speed of the car. Set to a random number in the constructor between 80-110km/h
         Random rand = new Random();
         normalSpeed = speedMin + rand.nextInt((speedMax - speedMin));
-        System.out.println(normalSpeed);
 
         createCarName();
     }
@@ -30,7 +29,6 @@ public class Car {
 
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
-        System.out.println(speedLimit);
     }
 
     int generateSpeed() {
@@ -51,7 +49,6 @@ public class Car {
     void moveForAnHour() {
         int distanceFromSpeed = generateSpeed();
         distanceTraveled += distanceFromSpeed;
-        System.out.println(carName + " " + distanceTraveled);
     }
 
 
@@ -69,14 +66,12 @@ public class Car {
         carNamesList.add("Expedition");
         carNamesList.add("Intro");
         carNamesList.add("Hero");
-        //System.out.println(carNamesList);
 
         Random rand = new Random();
         int randomIndex1 = rand.nextInt(10);
         int randomIndex2 = rand.nextInt(10);
 
         carName = carNamesList.get(randomIndex1) + " " + carNamesList.get(randomIndex2);
-        System.out.println(carName);
     }
 
     String getCarName() {

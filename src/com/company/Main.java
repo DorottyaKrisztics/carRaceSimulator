@@ -31,18 +31,15 @@ public class Main {
             motorcycleObjectList.add(new Motorcycle());
             truckObjectList.add(new Truck());
         }
+
         for (int i=0; i < carObjectList.size(); i++) {
             carObjectList.get(i).setSpeedLimit(70);
         }
-
-        System.out.println(carObjectList);
-        System.out.println(truckObjectList);
-        System.out.println(motorcycleObjectList);
     }
 
 
     //simulates the race by calling moveForAnHour() on every vehicle 50 times
-    // and setting whether its raining.
+    // and setting whether its raining
     static void simulateRace() {
         for (int j =0; j < 50; j++) {
             boolean rainyRace = isRaining();
@@ -73,7 +70,12 @@ public class Main {
             System.out.println("Truck: " + getTruckName + " " + getDistanceTraveled);
         }
 
+        for (int i=0; i< motorcycleObjectList.size(); i++) {
 
+            String getMotorcycleName = motorcycleObjectList.get(i).getMotorcycleName();
+            int getDistanceTraveled = motorcycleObjectList.get(i).getDistanceTraveled();
+            System.out.println("Motorcycle: " + getMotorcycleName + " " + getDistanceTraveled);
+        }
     }
 
 

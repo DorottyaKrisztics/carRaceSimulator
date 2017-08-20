@@ -26,8 +26,6 @@ public class Motorcycle {
         } else {
             motorcycleSpeed = 100;
         }
-        //System.out.println(motorcycleSpeed);
-        System.out.println(rainyWeather);
     }
 
 
@@ -41,7 +39,6 @@ public class Motorcycle {
 
         motorcycleName = "Motorcycle " + nameNumber;
         nameNumber++;
-        System.out.println(motorcycleName);
     }
 
 
@@ -54,7 +51,14 @@ public class Motorcycle {
 
         int distanceFromSpeed = motorcycleSpeed;
         distanceTraveled += distanceFromSpeed;
-        System.out.println(motorcycleName + " " + distanceTraveled);
+    }
+
+    String getMotorcycleName() {
+        return motorcycleName;
+    }
+
+    int getDistanceTraveled() {
+        return distanceTraveled;
     }
 
 }
