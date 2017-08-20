@@ -21,21 +21,24 @@ public class Main {
     //createVehicles(): creates 10 cars, 10 trucks and 10 motorcycles
     static List<Car> carObjectList = new ArrayList<>();
     static List<Motorcycle> motorcycleObjectList = new ArrayList<>();
+    static List<Truck> truckObjectList = new ArrayList<>();
 
     static void createVehicles() {
 
         for (int count = 1; count <= 10; count++) {
             carObjectList.add(new Car());
             motorcycleObjectList.add(new Motorcycle());
+            truckObjectList.add(new Truck());
 
         }
         System.out.println(carObjectList);
+        System.out.println(truckObjectList);
         System.out.println(motorcycleObjectList);
     }
 
 
-    //simulateRace(): simulates the race by calling moveForAnHour() on every vehicle 50 times
-    // and setting whether its raining
+    //simulates the race by calling moveForAnHour() on every vehicle 50 times
+    // and setting whether its raining.
     static void simulateRace() {
         for (int j =0; j < 50; j++) {
             boolean rainyRace = isRaining();
@@ -43,6 +46,7 @@ public class Main {
             for (int i = 0; i < 10; i++) {
                 carObjectList.get(i).moveForAnHour();
                 motorcycleObjectList.get(i).moveForAnHour(rainyRace);
+                truckObjectList.get(i).moveForAnHour();
             }
         }
     }
@@ -53,11 +57,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-        //Motorcycle motorcycle1 = new Motorcycle();
-        //Motorcycle motorcycle2 = new Motorcycle();
-
-        //motorcycle1.moveForAnHour(isRaining());
-        //motorcycle1.moveForAnHour(true);
         createVehicles();
         simulateRace();
     }
@@ -81,11 +80,12 @@ class Car {
         System.out.println(normalSpeed);
 
         createCarName();
-
     }
 
+  
     //there is a 30% chance that they can go only with 70km/h speed
     //static setSpeedLimit(int limit): Call this from the Main class!
+
     static void setSpeedLimit(int limit) {
         speedLimit = limit;
         System.out.println(speedLimit);
@@ -109,7 +109,7 @@ class Car {
     void moveForAnHour() {
         int distanceFromSpeed = generateSpeed();
         distanceTraveled += distanceFromSpeed;
-        System.out.println(distanceTraveled);
+        System.out.println(carName + " " + distanceTraveled);
     }
 
 
@@ -140,14 +140,59 @@ class Car {
 
 
 class Truck {
-    /*// speed: 100km/h. 5% chance of breaking down for 2 hours.
-    // Truck drivers are boring. They call all their trucks a random number between 0 and 1000.
-    breakdownTurnsLeft // holds how long its still broken down.
-    distanceTraveled
-    moveForAnHour()*/
+
+    int truckName;
+    boolean breakdown;
 
     Truck() {
+        createTruckName();
+    }
 
+    //speed: 100km/h. 5% chance of breaking down for 2 hours
+    int truckSpeed = 100;
+
+    boolean setBreakingDown() {
+        breakdown=false;
+        Random random = new Random();
+        double chance = random.nextDouble();
+        if (chance <= 0.05) {
+            breakdown = true;
+            breakdownTurnsLeft = 2;
+        }
+        return breakdown;
+    }
+
+
+    //breakdownTurnsLeft: holds how long its still broken down
+    int breakdownTurnsLeft;
+
+    int distanceTraveled = 0;
+
+    void moveForAnHour() {
+        int distanceFromSpeed = truckSpeed;
+        // the truck will be broken down for 1 or 2 hours long
+        if (breakdownTurnsLeft > 0) {
+            distanceTraveled += 0;
+            breakdownTurnsLeft -= 1;
+
+        } else {
+            breakdownTurnsLeft = 0;
+            distanceTraveled += distanceFromSpeed;
+            setBreakingDown();
+        }
+
+        System.out.println("truckname: " + truckName + " " + distanceTraveled);
+        System.out.println(breakdownTurnsLeft);
+    }
+
+    //They call all their trucks a random number between 0 and 1000
+    int truckNameMin = 0;
+    int truckNameMax = 1000;
+
+    void createTruckName() {
+        Random rand = new Random();
+        truckName = truckNameMin + rand.nextInt((truckNameMax - truckNameMin));
+        System.out.println("truckname: " + truckName);
     }
 }
 
